@@ -1,23 +1,31 @@
- export const cart = [];
+export const cart = [
+    {
+        productID:'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+        quantity:2
+    },{
+        productID:'15b6fc6f-327a-4ec4-896f-486349e85a3d',
+        quantity:1
+    }
+];
 
-  export function addtoCart(productId){
-  let matchingItem ;
+export function addtoCart(productId) {
+    let matchingItem;
 
-      cart.forEach((cartItem) => {
-        if(productId === cartItem.productId){
-          matchingItem = cartItem;
+    cart.forEach((cartItem) => {
+        if (productId === cartItem.productId) {
+            matchingItem = cartItem;
         }
-      });
+    });
 
-      if(matchingItem ){
+    if (matchingItem) {
         matchingItem.quantity += 1;
-      }else{
+    } else {
         cart.push({
-        productId: productId,
-        quantity: 1
-         });
-      }
+            productId: productId,
+            quantity: 1
+        });
+    }
 
-      
-      
-  };
+
+
+};
