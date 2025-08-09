@@ -40,7 +40,7 @@ cartSummaryHTML+=` <div class="cart-item-container">
                   <span class="update-quantity-link link-primary">
                     Update
                   </span>
-                  <span class="delete-quantity-link link-primary">
+                  <span class="delete-quantity-link link-primary js-delete-link">
                     Delete
                   </span>
                 </div>
@@ -98,3 +98,4 @@ cartSummaryHTML+=` <div class="cart-item-container">
 
 document.querySelector('.js-order-summary')
 .innerHTML = cartSummaryHTML;
+
