@@ -6,18 +6,19 @@ import {formatCurrency} from './utils/money.js'
 let cartSummaryHTML = '';
 
 cart.forEach((cartItem) => {
-const productID = cartItem.productID;
+const productId = cartItem.productId;
 
 let matchingProduct ;
 
 products.forEach((product) => {
-    if(product.id===productID){
+    if(product.id===productId){
         matchingProduct = product;
     }
 });
 
 
-cartSummaryHTML+=` <div class="cart-item-container">
+cartSummaryHTML+=` <div class="cart-item-container  
+js-cart-item-container-${matchingProduct.id}">
             <div class="delivery-date">
               Delivery date: Tuesday, June 21
             </div>
@@ -31,7 +32,7 @@ cartSummaryHTML+=` <div class="cart-item-container">
                  ${matchingProduct.name}
                 </div>
                 <div class="product-price">
-                  ${formatCurrency(matchingProduct.priceCents)};
+                  ${formatCurrency(matchingProduct.priceCents)}
                 </div>
                 <div class="product-quantity">
                   <span>
@@ -101,8 +102,14 @@ document.querySelector('.js-order-summary')
 
  document.querySelectorAll('.js-delete-link')
  .forEach((link) => {
-  link.addEventListener('click',()=> {
-    const productId = link.dataset.productId ;
+  link.addEventListener('click',() => {
+    const productId = link.dataset.productId;
     removeFromCart(productId);
+
+   const container= document.querySelector(
+      `.js-cart-item-container-${productId}`
+    );
+ 
+    container.remove();
   });
  });
